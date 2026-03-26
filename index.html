@@ -90,8 +90,35 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        .glass-menu {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.86) 60%, rgba(255, 255, 255, 0.7) 100%);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 0 0 12px 12px;
+        }
+
+        .dark .glass-menu {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.50) 60%, rgba(0, 0, 0, 0.20) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .hero-gradient {
             background: linear-gradient(to top, rgb(var(--surface)) 0%, rgb(var(--surface) / 0.45) 50%, rgb(var(--surface) / 0.12) 100%);
+        }
+
+        .animation-slide-down {
+            animation: slideDown 300ms ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -113,7 +140,10 @@
                     <button id="themeToggle" type="button" class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant bg-surface-container-low text-on-surface hover:scale-105 active:scale-95 transition-all" aria-label="Cambiar tema">
                         <span id="themeToggleIcon" class="material-symbols-outlined text-xl">light_mode</span>
                     </button>
-                    <a class="inline-flex items-center gap-2 bg-primary text-on-primary-container px-6 py-2 rounded-full font-headline font-black text-xs tracking-tighter hover:scale-105 active:scale-95 transition-all" href="https://wa.me/3751669055">
+                    <button id="mobileMenuToggle" type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant bg-surface-container-low text-on-surface hover:scale-105 active:scale-95 transition-all" aria-label="Abrir menú">
+                        <span id="mobileMenuIcon" class="material-symbols-outlined text-xl">menu</span>
+                    </button>
+                    <a class="hidden sm:inline-flex items-center gap-2 bg-primary text-on-primary-container px-6 py-2 rounded-full font-headline font-black text-xs tracking-tighter hover:scale-105 active:scale-95 transition-all" href="https://wa.me/3751669055">
                         <span aria-hidden="true" style="display:inline-flex;width:16px;height:16px;line-height:0;">
                             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -126,6 +156,24 @@
             </nav>
         </div>
     </header>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden fixed top-[72px] left-0 right-0 z-40 glass-menu animation-slide-down">
+        <div class="max-w-8xl mx-auto px-6 py-6 space-y-4">
+            <a class="text-primary font-headline font-black text-sm uppercase tracking-tighter block py-3 border-b-2 border-primary pb-3 transition-all duration-200 hover:scale-105" href="#equipamiento">Equipamiento</a>
+            <a class="text-on-surface/70 font-headline font-black text-sm uppercase tracking-tighter block py-3 transition-colors hover:text-on-surface duration-200" href="#comunidad">Comunidad</a>
+            <a class="text-on-surface/70 font-headline font-black text-sm uppercase tracking-tighter block py-3 transition-colors hover:text-on-surface duration-200" href="#resenas">Reseñas</a>
+            <a class="text-on-surface/70 font-headline font-black text-sm uppercase tracking-tighter block py-3 transition-colors hover:text-on-surface duration-200" href="#contacto">Contacto</a>
+            <a class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary-container px-6 py-3 rounded-full font-headline font-black text-xs tracking-tighter hover:scale-105 active:scale-95 transition-all w-full" href="https://wa.me/3751669055">
+                <span aria-hidden="true" style="display:inline-flex;width:16px;height:16px;line-height:0;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path d="M20.52 3.449A11.94 11.94 0 0012.067 0C5.495 0 .142 5.353.142 11.924c0 2.104.55 4.159 1.595 5.97L0 24l6.267-1.644a11.9 11.9 0 005.8 1.485h.005c6.57 0 11.928-5.353 11.928-11.926a11.92 11.92 0 00-3.48-8.466zm-8.453 18.39h-.004a9.9 9.9 0 01-5.043-1.378l-.362-.215-3.72.976.993-3.627-.236-.372a9.9 9.9 0 01-1.52-5.298c.003-5.462 4.447-9.906 9.913-9.906 2.646 0 5.13 1.03 7.001 2.902a9.86 9.86 0 012.896 7.005c-.003 5.463-4.447 9.906-9.918 9.906z" />
+                    </svg>
+                </span>
+                RESERVAR
+            </a>
+        </div>
+    </div>
     <main>
         <!-- Hero Section -->
         <section class="relative min-h-screen flex items-end pt-24 pb-20 px-6 overflow-hidden">
@@ -165,7 +213,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <!-- Card 1 -->
-                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
+                    <div class="bg-surface-container-low px-6 py-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-primary text-3xl" data-icon="sports_soccer">sports_soccer</span>
                         </div>
@@ -173,7 +221,7 @@
                         <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Césped sintético premium con caucho de alta densidad para evitar lesiones.</p>
                     </div>
                     <!-- Card 2 -->
-                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
+                    <div class="bg-surface-container-low px-6 py-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
                         <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
                             <span class="material-symbols-outlined text-secondary text-3xl" data-icon="outdoor_grill">outdoor_grill</span>
                         </div>
@@ -181,7 +229,7 @@
                         <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Espacio techado y equipado para el asado post-partido con amigos.</p>
                     </div>
                     <!-- Card 3 -->
-                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
+                    <div class="bg-surface-container-low px-6 py-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
                         <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                             <span class="material-symbols-outlined text-primary text-3xl" data-icon="sports_bar">sports_bar</span>
                         </div>
@@ -189,7 +237,7 @@
                         <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Bebidas frías, snacks y el mejor ambiente para disfrutar los resultados.</p>
                     </div>
                     <!-- Card 4 -->
-                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
+                    <div class="bg-surface-container-low px-6 py-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
                         <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
                             <span class="material-symbols-outlined text-secondary text-3xl" data-icon="security">security</span>
                         </div>
@@ -211,7 +259,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Escuelita -->
                     <div class="relative group overflow-hidden rounded-xl h-80">
-                        <img alt="Escuelita de fútbol" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Group of diverse children in colorful soccer uniforms practicing drills on a bright green turf under sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvroFFAYleihgst1bh5mJ7552E9QHAdhnCWRt3UZAmX8-QitouVXJfNRih8GQMwDdao2kfYXIhcC_gmv7tm96j426-laRgQ8GqH4YFRwMtVuw-p5EEYDGQqe5XxEi-3B1gteLn8MyTd880JnNSirvbRbU2Y_WAzRDbbZOTUfocK2EE0AlhgF_pq5-duhYx7AyqSS2-sXRVvDTb4pRIOaVR8L_fWXzySRgrLBtMMH1ubUYAQCgtbl-TUtbt7zManrptrnxKUK_gGq8" />
+                        <img alt="Escuelita de fútbol" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Group of diverse children in colorful soccer uniforms practicing drills on a bright green turf under sunlight" src="Resources/img/Futboldeninos.png" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-6 right-0">
                             <span class="bg-primary text-on-primary-container font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">5 a 12 Años</span>
@@ -221,7 +269,7 @@
                     </div>
                     <!-- Hockey -->
                     <div class="relative group overflow-hidden rounded-xl h-80">
-                        <img alt="Mamis Hockey" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Women playing field hockey on synthetic grass, action shot with focus on the ball and sticks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe1qKGnUdnVcv18hViJ4vyv7Rf1P0tBlmknvTswpnb8Kf_Ek03vEKwbOWhOJOu91RD7WJqMaJNWzeRhf_jeMJq6uIpNbDpJ_OiXBQdqfKEphoi5hKomcV9g3JEYbzQFrfdtAp5ZD2-KXfcgAq4XaRcxPzYIWIcszOjrESAEMS0iQzA3hmJr1jUejeE-IMVJl3bqm685pFCFkSyTCyXNdWoRTtY3t6zACw51MeWtqKZTWv5VmPVW55-87UEKkRTWKyWI2hAkqMM7oU" />
+                        <img alt="Mamis Hockey" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Women playing field hockey on synthetic grass, action shot with focus on the ball and sticks" src="Resources/img/EquipodeHockey.png" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-6 right-0">
                             <span class="bg-secondary text-white font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">Entrenamiento</span>
@@ -231,7 +279,7 @@
                     </div>
                     <!-- Resto -->
                     <div class="relative group overflow-hidden rounded-xl h-80">
-                        <img alt="Resto El Rústico" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Gourmet double cheeseburger with crispy fries on a rustic wooden board, warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIyYOIIrjRViDjxWiygDidNjNywgQE8dW1K3b54AQEJnC0V2WbuL7nMBYCPQPPaYOeeRiBKVrjV11nWtzMcA-AZ6HDPdhd7vgil4iTkhgtaa37CJJGSozIENdgengEh3T69br8aUoT91SUg39XOUiq4Jlfo7kr6KLYawo3qtn4dJ0CjpUGzogs7WzOj-6Yx4pQSnh9R9bpQrLSQlL4MVl4vtD3rHabJh3kYcgaa1MYSq-OiPYXTH2zUQi3K1PPM6KoYy_Zq0pmwgY" />
+                        <img alt="Resto El Rústico" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Gourmet double cheeseburger with crispy fries on a rustic wooden board, warm cinematic lighting" src="Resources/img/Restobar.png" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-6 right-0">
                             <span class="bg-orange-600 text-white font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">Restó El Rustico</span>
@@ -298,7 +346,7 @@
                         </a>
                     </div>
                     <div class="h-96 rounded-2xl overflow-hidden border-4 border-surface-container-low shadow-2xl relative">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1261.69241971822!2d-54.758295466425835!3d-26.564952591065545!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f779d7d419b3ef%3A0xb29a779ea44875ad!2zRsO6dGJvbCA1IEVsIFLDunN0aWNv!5e0!3m2!1ses-419!2sar!4v1774467506899!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1261.69241971822!2d-54.758295466425835!3d-26.564952591065545!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f779d7d419b3ef%3A0xb29a779ea44875ad!2zRsO6dGJvbCA1IEVsIFNDw6F0aWN0bw!5e0!3m2!1ses-419!2sar!4v1774467506899!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
