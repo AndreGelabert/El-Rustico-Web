@@ -1,14 +1,357 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="dark" lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EL RÚSTICO - El mejor Fútbol 5 de Montecarlo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "rgb(var(--surface) / <alpha-value>)",
+                        "background": "rgb(var(--surface) / <alpha-value>)",
+                        "surface-container-lowest": "rgb(var(--surface-container-lowest) / <alpha-value>)",
+                        "surface-container-low": "rgb(var(--surface-container-low) / <alpha-value>)",
+                        "surface-container": "rgb(var(--surface-container) / <alpha-value>)",
+                        "surface-container-high": "rgb(var(--surface-container-high) / <alpha-value>)",
+                        "surface-container-highest": "rgb(var(--surface-container-highest) / <alpha-value>)",
+                        "on-surface": "rgb(var(--on-surface) / <alpha-value>)",
+                        "on-surface-variant": "rgb(var(--on-surface-variant) / <alpha-value>)",
+                        "outline-variant": "rgb(var(--outline-variant) / <alpha-value>)",
+                        "primary": "rgb(var(--primary) / <alpha-value>)",
+                        "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+                        "on-primary-container": "rgb(var(--on-primary-container) / <alpha-value>)",
+                        "secondary": "rgb(var(--secondary) / <alpha-value>)"
+                    },
+                    fontFamily: {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --surface: 248 250 252;
+            --surface-container-lowest: 255 255 255;
+            --surface-container-low: 241 245 249;
+            --surface-container: 234 239 245;
+            --surface-container-high: 229 235 243;
+            --surface-container-highest: 226 232 240;
+            --on-surface: 17 24 39;
+            --on-surface-variant: 75 85 99;
+            --outline-variant: 203 213 225;
+            --primary: 110 243 98;
+            --secondary: 253 144 0;
+            --on-primary: 0 42 2;
+            --on-primary-container: 0 42 2;
+        }
+
+        .dark {
+            --surface: 14 14 14;
+            --surface-container-lowest: 0 0 0;
+            --surface-container-low: 19 19 19;
+            --surface-container: 26 26 26;
+            --surface-container-high: 32 32 31;
+            --surface-container-highest: 38 38 38;
+            --on-surface: 255 255 255;
+            --on-surface-variant: 173 170 170;
+            --outline-variant: 72 72 71;
+            --primary: 110 243 98;
+            --secondary: 253 144 0;
+            --on-primary: 0 88 7;
+            --on-primary-container: 0 42 2;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .glass-header {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.86) 60%, rgba(255, 255, 255, 0.7) 100%);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .dark .glass-header {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0.35) 100%);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to top, rgb(var(--surface)) 0%, rgb(var(--surface) / 0.45) 50%, rgb(var(--surface) / 0.12) 100%);
+        }
+    </style>
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="glass-header">
+            <nav class="max-w-8xl mx-auto flex justify-between items-center px-6 py-4">
+                <div class="text-2xl font-black italic text-primary tracking-tighter font-headline">
+                    EL RÚSTICO
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-headline uppercase tracking-tighter font-black text-xs">
+                    <a class="text-primary border-b-2 border-primary pb-1 transition-all duration-200" href="#equipamiento">Equipamiento</a>
+                    <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:scale-105 transition-transform duration-200" href="#comunidad">Comunidad</a>
+                    <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:scale-105 transition-transform duration-200" href="#resenas">Reseñas</a>
+                    <a class="text-on-surface/70 hover:text-on-surface transition-colors hover:scale-105 transition-transform duration-200" href="#contacto">Contacto</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" type="button" class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant bg-surface-container-low text-on-surface hover:scale-105 active:scale-95 transition-all" aria-label="Cambiar tema">
+                        <span id="themeToggleIcon" class="material-symbols-outlined text-xl">light_mode</span>
+                    </button>
+                    <a class="inline-flex items-center gap-2 bg-primary text-on-primary-container px-6 py-2 rounded-full font-headline font-black text-xs tracking-tighter hover:scale-105 active:scale-95 transition-all" href="https://wa.me/3751669055">
+                        <span aria-hidden="true" style="display:inline-flex;width:16px;height:16px;line-height:0;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                <path d="M20.52 3.449A11.94 11.94 0 0012.067 0C5.495 0 .142 5.353.142 11.924c0 2.104.55 4.159 1.595 5.97L0 24l6.267-1.644a11.9 11.9 0 005.8 1.485h.005c6.57 0 11.928-5.353 11.928-11.926a11.92 11.92 0 00-3.48-8.466zm-8.453 18.39h-.004a9.9 9.9 0 01-5.043-1.378l-.362-.215-3.72.976.993-3.627-.236-.372a9.9 9.9 0 01-1.52-5.298c.003-5.462 4.447-9.906 9.913-9.906 2.646 0 5.13 1.03 7.001 2.902a9.86 9.86 0 012.896 7.005c-.003 5.463-4.447 9.906-9.918 9.906z" />
+                            </svg>
+                        </span>
+                        RESERVAR
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-end pt-24 pb-20 px-6 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img id="heroBackgroundImage" alt="Estadio de fútbol 5" class="w-full h-full object-cover" data-alt="Foto de las multiples canchas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzxdUGa4MjXsDrs6fX-wRSHjbX9BZRBn6cDrkhwkpbvG4_ZmomiBzY9OrQYmrbhn5aFFweJ7lP0EgCfuuIhizQTWin2meHQ7BXzxGeseTZziPykdS4j8k0fFX3nsRzIlMEcpz0t6zoaxi-QRW3aLxF7_BYimZDw_8TxRPOOdcX6uoJIZbOEmeRASYWx6drUI63q4-kv4vfj1IPmAt4nnlJfslDe-M76dT83PQafpF-flybtlzq-0gBd9PJNPKA72iVnqvefC8oYVE" />
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto w-full">
+                <div class="max-w-4xl">
+                    <h1 class="font-headline font-black text-6xl md:text-9xl tracking-tighter leading-tight mb-6">
+                        EL RÚSTICO<br />
+                        <span class="text-primary italic">FÚTBOL 5</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-on-surface-variant font-medium max-w-2xl mb-10 leading-relaxed">
+                        Pasto sintético de última generación, parrillas, cantina y el mejor tercer tiempo de Montecarlo.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary-container font-headline font-black px-8 py-5 rounded-full text-lg tracking-tighter hover:scale-105 active:scale-95 transition-all" href="https://wa.me/3751669055" target="_blank">
+                            <span aria-hidden="true" style="display:inline-flex;width:22px;height:22px;line-height:0;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                    <path d="M20.52 3.449A11.94 11.94 0 0012.067 0C5.495 0 .142 5.353.142 11.924c0 2.104.55 4.159 1.595 5.97L0 24l6.267-1.644a11.9 11.9 0 005.8 1.485h.005c6.57 0 11.928-5.353 11.928-11.926a11.92 11.92 0 00-3.48-8.466zm-8.453 18.39h-.004a9.9 9.9 0 01-5.043-1.378l-.362-.215-3.72.976.993-3.627-.236-.372a9.9 9.9 0 01-1.52-5.298c.003-5.462 4.447-9.906 9.913-9.906 2.646 0 5.13 1.03 7.001 2.902a9.86 9.86 0 012.896 7.005c-.003 5.463-4.447 9.906-9.918 9.906z" />
+                                </svg>
+                            </span>
+                            RESERVAR CANCHA POR WHATSAPP
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Facilities Section -->
+        <section id="equipamiento" class="py-24 px-6 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <span class="font-label text-primary font-bold tracking-widest text-sm uppercase block mb-4">EQUIPAMIENTO PROFESIONAL</span>
+                    <h2 class="font-headline font-black text-4xl md:text-6xl tracking-tighter uppercase leading-none">TODO LO QUE NECESITAS<br />PARA EL PARTIDO</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Card 1 -->
+                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl" data-icon="sports_soccer">sports_soccer</span>
+                        </div>
+                        <h3 class="font-headline font-bold text-xl mb-3 tracking-tight">4 CANCHAS DE FÚTBOL 5</h3>
+                        <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Césped sintético premium con caucho de alta densidad para evitar lesiones.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-3xl" data-icon="outdoor_grill">outdoor_grill</span>
+                        </div>
+                        <h3 class="font-headline font-bold text-xl mb-3 tracking-tight">PARRILLAS Y QUINCHO</h3>
+                        <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Espacio techado y equipado para el asado post-partido con amigos.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-primary transition-all group">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl" data-icon="sports_bar">sports_bar</span>
+                        </div>
+                        <h3 class="font-headline font-bold text-xl mb-3 tracking-tight">CANTINA Y MÚSICA</h3>
+                        <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Bebidas frías, snacks y el mejor ambiente para disfrutar los resultados.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-surface-container-low p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all group">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
+                            <span class="material-symbols-outlined text-secondary text-3xl" data-icon="security">security</span>
+                        </div>
+                        <h3 class="font-headline font-bold text-xl mb-3 tracking-tight">SEGURIDAD Y WIFI</h3>
+                        <p class="text-on-surface-variant font-medium text-sm leading-relaxed">Estacionamiento propio vigilado por cámaras y WiFi libre en todo el predio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section (Compact) -->
+        <section id="comunidad" class="py-24 px-6 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="font-label text-secondary font-bold tracking-widest text-sm uppercase block mb-4">COMUNIDAD EL RÚSTICO</span>
+                        <h2 class="font-headline font-black text-4xl md:text-5xl tracking-tighter uppercase">MÁS QUE SOLO FÚTBOL</h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Escuelita -->
+                    <div class="relative group overflow-hidden rounded-xl h-80">
+                        <img alt="Escuelita de fútbol" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Group of diverse children in colorful soccer uniforms practicing drills on a bright green turf under sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvroFFAYleihgst1bh5mJ7552E9QHAdhnCWRt3UZAmX8-QitouVXJfNRih8GQMwDdao2kfYXIhcC_gmv7tm96j426-laRgQ8GqH4YFRwMtVuw-p5EEYDGQqe5XxEi-3B1gteLn8MyTd880JnNSirvbRbU2Y_WAzRDbbZOTUfocK2EE0AlhgF_pq5-duhYx7AyqSS2-sXRVvDTb4pRIOaVR8L_fWXzySRgrLBtMMH1ubUYAQCgtbl-TUtbt7zManrptrnxKUK_gGq8" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 right-0">
+                            <span class="bg-primary text-on-primary-container font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">5 a 12 Años</span>
+                            <h3 class="font-headline font-bold text-2xl tracking-tight text-white mb-2">Escuelita de Fútbol</h3>
+                            <p class="text-white/80 text-sm leading-snug">Entrenamiento integral para niños de 5 a 12 años, fomentando el deporte y el compañerismo.</p>
+                        </div>
+                    </div>
+                    <!-- Hockey -->
+                    <div class="relative group overflow-hidden rounded-xl h-80">
+                        <img alt="Mamis Hockey" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Women playing field hockey on synthetic grass, action shot with focus on the ball and sticks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe1qKGnUdnVcv18hViJ4vyv7Rf1P0tBlmknvTswpnb8Kf_Ek03vEKwbOWhOJOu91RD7WJqMaJNWzeRhf_jeMJq6uIpNbDpJ_OiXBQdqfKEphoi5hKomcV9g3JEYbzQFrfdtAp5ZD2-KXfcgAq4XaRcxPzYIWIcszOjrESAEMS0iQzA3hmJr1jUejeE-IMVJl3bqm685pFCFkSyTCyXNdWoRTtY3t6zACw51MeWtqKZTWv5VmPVW55-87UEKkRTWKyWI2hAkqMM7oU" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 right-0">
+                            <span class="bg-secondary text-white font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">Entrenamiento</span>
+                            <h3 class="font-headline font-bold text-2xl tracking-tight text-white mb-2">Hockey sobre Césped</h3>
+                            <p class="text-white/80 text-sm leading-snug">Campo de entrenamiento oficial de las "Mamis Hockey", campeonas de la Liga Misionera y Copa de Plata Posadeña 2024.</p>
+                        </div>
+                    </div>
+                    <!-- Resto -->
+                    <div class="relative group overflow-hidden rounded-xl h-80">
+                        <img alt="Resto El Rústico" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Gourmet double cheeseburger with crispy fries on a rustic wooden board, warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIyYOIIrjRViDjxWiygDidNjNywgQE8dW1K3b54AQEJnC0V2WbuL7nMBYCPQPPaYOeeRiBKVrjV11nWtzMcA-AZ6HDPdhd7vgil4iTkhgtaa37CJJGSozIENdgengEh3T69br8aUoT91SUg39XOUiq4Jlfo7kr6KLYawo3qtn4dJ0CjpUGzogs7WzOj-6Yx4pQSnh9R9bpQrLSQlL4MVl4vtD3rHabJh3kYcgaa1MYSq-OiPYXTH2zUQi3K1PPM6KoYy_Zq0pmwgY" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 right-0">
+                            <span class="bg-orange-600 text-white font-label text-[10px] font-bold px-2 py-1 rounded uppercase mb-2 inline-block">Restó El Rustico</span>
+                            <h3 class="font-headline font-bold text-2xl tracking-tight text-white mb-2">Tu lugar para comer</h3>
+                            <p class="text-white/80 text-sm leading-snug">Disfrutá de nuestras hamburguesas, pizzas y picadas. Contamos con delivery y retiro en el local para que disfrutes donde quieras.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Reviews Section -->
+        <section id="resenas" class="py-24 px-6 bg-surface">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="font-headline font-black text-4xl mb-16 tracking-tighter uppercase italic">VOCES DE LA CANCHA</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="reviews-grid">
+                    <!-- Reseñas dinamicas -->
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contacto" class="py-24 px-6 bg-surface-container-highest">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="font-headline font-black text-5xl tracking-tighter uppercase mb-8 leading-none">UBICACIÓN Y<br />CONTACTO</h2>
+                        <div class="space-y-6 mb-10">
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+                                <div>
+                                    <p class="font-bold text-lg">Av. Brasil 4180</p>
+                                    <p class="text-on-surface-variant">Montecarlo, Misiones</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-secondary mt-1">schedule</span>
+                                <div>
+                                    <p class="font-bold text-lg">Abierto Todos los Días</p>
+                                    <p class="text-on-surface-variant">09:00 AM - 11:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">call</span>
+                                <div>
+                                    <a href="tel:3751669055" class="font-bold text-lg" target="_blank">3751 669055</a>
+                                    <p class="text-on-surface-variant">Consultas y Reservas</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-secondary mt-1">mail</span>
+                                <div>
+                                    <a href="mailto:Benchowanderer@hotmail.com" class="font-bold text-lg break-all">Benchowanderer@hotmail.com</a>
+                                    <p class="text-on-surface-variant">Correo Electrónico</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary-container font-headline font-black px-8 py-5 rounded-full text-lg tracking-tighter hover:scale-105 active:scale-95 transition-all" href="https://wa.me/3751669055" target="_blank">
+                            <span aria-hidden="true" style="display:inline-flex;width:20px;height:20px;line-height:0;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                    <path d="M20.52 3.449A11.94 11.94 0 0012.067 0C5.495 0 .142 5.353.142 11.924c0 2.104.55 4.159 1.595 5.97L0 24l6.267-1.644a11.9 11.9 0 005.8 1.485h.005c6.57 0 11.928-5.353 11.928-11.926a11.92 11.92 0 00-3.48-8.466zm-8.453 18.39h-.004a9.9 9.9 0 01-5.043-1.378l-.362-.215-3.72.976.993-3.627-.236-.372a9.9 9.9 0 01-1.52-5.298c.003-5.462 4.447-9.906 9.913-9.906 2.646 0 5.13 1.03 7.001 2.902a9.86 9.86 0 012.896 7.005c-.003 5.463-4.447 9.906-9.918 9.906z" />
+                                </svg>
+                            </span>
+                            ENVIAR WHATSAPP
+                        </a>
+                    </div>
+                    <div class="h-96 rounded-2xl overflow-hidden border-4 border-surface-container-low shadow-2xl relative">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1261.69241971822!2d-54.758295466425835!3d-26.564952591065545!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f779d7d419b3ef%3A0xb29a779ea44875ad!2zRsO6dGJvbCA1IEVsIFLDunN0aWNv!5e0!3m2!1ses-419!2sar!4v1774467506899!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-outline-variant w-full py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-primary font-black italic text-xl font-headline mb-2">EL RÚSTICO</div>
+                <p class="font-label text-on-surface-variant text-xs uppercase tracking-widest max-w-sm">
+                    © 2026 El Rústico. Av. Brasil 4180. Abierto todos los días 09:00 - 23:00 HS.
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="inline-flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:underline" href="https://www.instagram.com/el_rustico_f5" target="_blank">
+                    <span aria-hidden="true" style="display:inline-flex;width:14px;height:14px;line-height:0;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.8A3.95 3.95 0 003.8 7.75v8.5A3.95 3.95 0 007.75 20.2h8.5a3.95 3.95 0 003.95-3.95v-8.5a3.95 3.95 0 00-3.95-3.95h-8.5z" />
+                            <path d="M12 7a5 5 0 110 10 5 5 0 010-10zm0 1.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4z" />
+                            <circle cx="17.4" cy="6.6" r="1.2" />
+                        </svg>
+                    </span>
+                    Instagram
+                </a>
+                <a class="inline-flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:underline" href="https://wa.me/3751669055" target="_blank">
+                    <span aria-hidden="true" style="display:inline-flex;width:14px;height:14px;line-height:0;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.075-.792.372-.273.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.718 2.007-1.412.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path d="M20.52 3.449A11.94 11.94 0 0012.067 0C5.495 0 .142 5.353.142 11.924c0 2.104.55 4.159 1.595 5.97L0 24l6.267-1.644a11.9 11.9 0 005.8 1.485h.005c6.57 0 11.928-5.353 11.928-11.926a11.92 11.92 0 00-3.48-8.466zm-8.453 18.39h-.004a9.9 9.9 0 01-5.043-1.378l-.362-.215-3.72.976.993-3.627-.236-.372a9.9 9.9 0 01-1.52-5.298c.003-5.462 4.447-9.906 9.913-9.906 2.646 0 5.13 1.03 7.001 2.902a9.86 9.86 0 012.896 7.005c-.003 5.463-4.447 9.906-9.918 9.906z" />
+                        </svg>
+                    </span>
+                    WhatsApp
+                </a>
+                <a class="inline-flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:underline" href="https://www.facebook.com/p/F%C3%BAtbol-5-El-R%C3%BAstico-100063687007667/" target="_blank">
+                    <span aria-hidden="true" style="display:inline-flex;width:14px;height:14px;line-height:0;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V11H7.2v3h2.9v8h3.4z" />
+                        </svg>
+                    </span>
+                    Facebook
+                </a>
+                <a class="inline-flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:underline" href="https://maps.app.goo.gl/jk25b1vEJ1L7c3qA7" target="_blank">
+                    <span aria-hidden="true" style="display:inline-flex;width:14px;height:14px;line-height:0;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z" />
+                        </svg>
+                    </span>
+                    Ubicación
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>
